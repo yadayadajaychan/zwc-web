@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+Copyright (C) 2023 Ethan Cheng <ethanrc0528@gmail.com>
+
+This file is part of zwc-web.
+
+zwc-web is free software: you can redistribute it and/or modify it under the
+terms of the GNU Affero General Public License as published by the Free
+Software Foundation, version 3 of the License.
+
+zwc-web is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
+details.
+
+You should have received a copy of the GNU Affero General Public License
+along with zwc-web. If not, see <https://www.gnu.org/licenses/>.
+-->
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<script src="wasm/wasm_exec.js"></script>
+		<script>
+			const go = new Go();
+			WebAssembly.instantiateStreaming(fetch("zwc-web.wasm"), go.importObject).then((result) => {
+				go.run(result.instance);
+			});
+		</script>
+	</head>
+	<body>
+		<textarea id="data" name="data" cols="80" rows="24"></textarea>
+		<!-- <textarea id="message" name="message" cols="80" rows="24"></textarea> -->
+		<input id="encode" type="submit" name="encode" value="encode" onclick="text.value = encode(data.value)">
+		<input id="decode" type="submit" name="decode" value="decode" onclick="data.value = decode(text.value)">
+		<input id="clear" type="submit" name="clear" value="clear" onclick="data.value=''; text.value=''">
+		<textarea id="text" name="text" cols="80" rows="24"></textarea>
+	</body>
+</html>
