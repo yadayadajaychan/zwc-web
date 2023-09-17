@@ -31,6 +31,12 @@ func encodeWrapper() js.Func {
 		if !ok {
 			return "error: no EOF separator found"
 		}
+		if len(data) == 0 {
+			return "error: no data supplied"
+		}
+		if len(message) == 0 {
+			return "error: no message supplied"
+		}
 
 		encoding := zwc.NewEncoding(1, 4, 16)
 		dst := make([]byte, encoding.EncodedMaxLen(len(data)))
