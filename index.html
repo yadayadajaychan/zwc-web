@@ -28,14 +28,42 @@ along with zwc-web. If not, see <https://www.gnu.org/licenses/>.
 		</script>
 	</head>
 	<body>
-		<textarea id="data" name="data" cols="80" rows="24"></textarea>
-		<!-- <textarea id="message" name="message" cols="80" rows="24"></textarea> -->
+		<h1>zwc-web</h1>
+
+		<p>
+		For a full featured command line interface, see
+		<a href="https://github.com/yadayadajaychan/zwc">https://github.com/yadayadajaychan/zwc</a>
+		</p>
+
+		<p>
+		message refers to the utf‐8 text which will be visible to viewers.
+		data is the data to be encoded into zero‐width utf‐8 characters and inserted
+		into the message.
+		text is the final product with the encoded data hidden in the message.
+		</p>
+
+		<p>
+		To encode, enter into the first box the data,
+		then the string 'EOF' on its own line,
+		then the message, and press 'encode'<br>
+
+		To decode, enter the text into the second box and press 'decode'<br>
+
+		Press 'clear' to clear both boxes.
+		</p>
+
+		<textarea id="data" name="data" cols="80" rows="15"></textarea><br><br>
 		<input id="encode" type="submit" name="encode" value="encode" onclick="text.value = encode(data.value)">
 		<input id="decode" type="submit" name="decode" value="decode" onclick="data.value = decode(text.value)">
-		<input id="clear" type="submit" name="clear" value="clear" onclick="data.value=''; text.value=''">
-		<textarea id="text" name="text" cols="80" rows="24"></textarea>
+		<input id="clear" type="submit" name="clear" value="clear" onclick="data.value=''; text.value=''"><br><br>
+		<textarea id="text" name="text" cols="80" rows="15"></textarea>
 	</body>
 	<footer>
+		<p>
+		This page utilizes JavaScript and WebAssembly.
+		All data is handled client-side and no data is sent to my server.
+		</p>
+
 		<p>
 		Source code for this page can be found at
 		<a href="https://github.com/yadayadajaychan/zwc-web">https://github.com/yadayadajaychan/zwc-web</a>
